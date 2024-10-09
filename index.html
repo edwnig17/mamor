@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Interactiva para Mi Amor 🥹❤️‍🩹</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3e5f5;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #story-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ce93d8;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s, transform 0.5s;
+        }
+
+        .choice-btn {
+            display: block;
+            width: 80%;
+            margin: 15px auto;
+            padding: 15px;
+            background: #ab47bc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+        }
+
+        .choice-btn:hover {
+            background: #8e24aa;
+            transform: scale(1.05);
+        }
+
+        #message {
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #image-gallery {
+            display: none; /* Inicialmente oculto */
+            margin-top: 20px;
+            display: flex; /* Cambia a flex para que las imágenes se alineen en fila */
+            flex-wrap: wrap; /* Permite que las imágenes se ajusten a varias líneas si es necesario */
+            justify-content: center; /* Centra las imágenes en el contenedor */
+        }
+
+        .image {
+            max-width: 200px; /* Limita el ancho máximo de cada imagen */
+            height: auto;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.5s;
+            flex: 1 1 150px; /* Permite que las imágenes se ajusten a un ancho mínimo */
+        }
+    </style>
+</head>
+<body>
+    <h1>Feliz mes, mi Amor! 🥹❤️‍🩹</h1>
+    <div id="story-container" class="fade-in">
+        <p id="story-text">Todo comenzó un domingo, cuando decidimos salir juntos por primera vez. ¿Recuerdas a dónde fuimos?</p>
+        <button class="choice-btn" onclick="nextPart(1, true)">Fuimos al billar y luego a pasarla bien</button>
+        <button class="choice-btn" onclick="nextPart(1, false)">A una fiesta con amigos</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="image-gallery">
+        <img class="image" src="img1.jpg" alt="Imagen 1">
+        <img class="image" src="img2.jpg" alt="Imagen 2">
+        <img class="image" src="img3.jpg" alt="Imagen 3">
+        <img class="image" src="img4.jpg" alt="Imagen 3">
+    </div>
+
+    <script>
+        const storyParts = [
+            {
+                text: "¡Correcto! Fuimos al billar y luego a pasarla bien. ¿Y qué sucedió al día siguiente?",
+                choices: [
+                    { text: "Nos mandamos mensajes diciendo cuánto nos gustó.", correct: true },
+                    { text: "No hablamos durante una semana.", correct: false }
+                ]
+            },
+            {
+                text: "Sí, fue un día lleno de sentimientos y empezamos a hablar mucho más. Luego, comenzamos a salir más seguido y todo fue maravilloso. ¿Recuerdas lo que más nos gustaba hacer juntos en esas salidas?",
+                choices: [
+                    { text: "Comer helado y hablar sobre nosotros por horas.", correct: true },
+                    { text: "Ir a comer todos los fines de semana.", correct: false }
+                ]
+            },
+            {
+                text: "¡Así es! Comíamos helado y nos encantaba estar siempre juntos y felices. Fuimos a muchos lugares juntos y hasta nos perdimos en uno. ¿Cuál fue ese lugar?",
+                choices: [
+                    { text: "Un parque lleno de caminos entre árboles.", correct: true },
+                    { text: "Una tienda de videojuegos.", correct: false }
+                ]
+            },
+            {
+                text: "Sí, nos perdimos por un buen rato entre esos árboles. Luego pasamos a vivir juntos y todo fue una experiencia nueva. ¿Qué fue lo que más te gustó de ese cambio?",
+                choices: [
+                    { text: "Sentir que estábamos construyendo un hogar juntos.", correct: true },
+                    { text: "Discutir por cada pequeño detalle.", correct: false }
+                ]
+            },
+            {
+                text: "Exactamente, construir un hogar juntos fue muy especial, a pesar de todas las dificultades. ¿Qué hacíamos para relajarnos en los momentos difíciles?",
+                choices: [
+                    { text: "Salíamos a caminar o a comer helado.", correct: true },
+                    { text: "Nos encerrábamos sin hablar por días.", correct: false }
+                ]
+            },
+            {
+                text: "¡Claro! Siempre buscábamos la manera de estar juntos y olvidarnos de las cosas malas. Un momento muy especial fue cuando me llevaste a conocer a tu familia. ¿Qué fue lo que más te gustó de ese día?",
+                choices: [
+                    { text: "La tranquilidad y felicidad que sentiste al verme con ellos.", correct: true },
+                    { text: "Que me sentí nervioso todo el tiempo.", correct: false }
+                ]
+            },
+            {
+                text: "¡Sí, fue un día especial para ambos! Y finalmente, después de tantas experiencias y desafíos, estamos aquí. ¿Cómo te sientes hoy en nuestro nuevo mes?",
+                choices: [
+                    { text: "Más feliz que nunca, porque estamos juntos y cumpliendo nuestros sueños.", correct: true },
+                    { text: "Indiferente, solo es un día más.", correct: false }
+                ]
+            }
+        ];
+
+        let currentPart = 0;
+
+        function nextPart(part, isCorrect) {
+            const message = document.getElementById("message");
+            const storyText = document.getElementById("story-text");
+            const container = document.getElementById("story-container");
+            const imageGallery = document.getElementById("image-gallery");
+
+            // Si la respuesta es correcta
+            if (isCorrect) {
+                message.textContent = ""; // Limpia el mensaje de error
+
+                // Verifica que el índice de la historia no exceda el número de partes
+                if (part <= storyParts.length) {
+                    currentPart = part;
+                    const nextStory = storyParts[part - 1]; // Obtiene la parte correspondiente
+
+                    // Actualiza el texto de la historia
+                    storyText.textContent = nextStory.text;
+
+                    // Limpia los botones anteriores
+                    removePreviousButtons();
+
+                    // Añade nuevos botones de opciones
+                    nextStory.choices.forEach((choice, index) => {
+                        const button = document.createElement("button");
+                        button.className = "choice-btn";
+                        button.textContent = choice.text;
+                        button.onclick = () => nextPart(part + 1, choice.correct);
+                        container.appendChild(button);
+                    });
+                }
+
+                // Comprueba si hemos llegado al final de la historia
+                if (part === storyParts.length) {
+                    // Limpia los botones de opción y muestra el mensaje final
+                    removePreviousButtons();
+                    storyText.textContent = "Gracias por completar nuestra historia juntos. Siempre recordaré estos momentos tan especiales que hemos compartido. 💖";
+                    message.textContent = "¡Has completado la historia! Te amo con todo mi corazón. 🥹❤️‍🩹";
+                    message.style.color = "#388e3c"; // Cambia el color a verde
+
+                    // Muestra la galería de imágenes y la frase especial
+                    imageGallery.style.display = "flex"; // Muestra la galería
+                    const specialMessage = document.createElement("p");
+                    specialMessage.textContent = "Feliz mes, mi monocuca hermosa 🥹❤️‍🩹";
+                    specialMessage.style.fontSize = "20px";
+                    specialMessage.style.marginTop = "20px";
+                    container.appendChild(specialMessage); // Añade el mensaje especial
+                }
+
+                // Añade la clase para la animación de transición
+                container.classList.remove("fade-in");
+                void container.offsetWidth; // Reinicia la animación
+                container.classList.add("fade-in");
+
+            } else {
+                // Mensaje de error si seleccionó una opción incorrecta
+                message.textContent = "Fallaste, esa no fue la opción correcta. ¡Inténtalo de nuevo! 😊";
+                container.classList.add("shake"); // Añade un efecto de vibración
+
+                setTimeout(() => {
+                    container.classList.remove("shake"); // Elimina el efecto de vibración después de un momento
+                }, 500);
+            }
+        }
+
+        function removePreviousButtons() {
+            // Selecciona todos los botones dentro del contenedor y los elimina
+            const buttons = document.querySelectorAll('.choice-btn');
+            buttons.forEach(button => button.remove());
+        }
+    </script>
+</body>
+</html>
